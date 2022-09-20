@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SubCategoriesCollectionViewCell" id="gTV-IL-0wX" customClass="SubCategoriesCollectionViewCell" customModule="e_commerce" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="158" height="62"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="158" height="62"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Evu-Qd-Lho">
+                        <rect key="frame" x="8" y="8" width="142" height="46"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="psm-I1-BM5">
+                                <rect key="frame" x="8" y="12.5" width="126" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="psm-I1-BM5" firstAttribute="centerY" secondItem="Evu-Qd-Lho" secondAttribute="centerY" id="5Pl-ZE-G5h"/>
+                            <constraint firstItem="psm-I1-BM5" firstAttribute="leading" secondItem="Evu-Qd-Lho" secondAttribute="leading" constant="8" id="7Fd-DB-a2A"/>
+                            <constraint firstItem="psm-I1-BM5" firstAttribute="centerX" secondItem="Evu-Qd-Lho" secondAttribute="centerX" id="Utz-Zt-SvG"/>
+                            <constraint firstAttribute="trailing" secondItem="psm-I1-BM5" secondAttribute="trailing" constant="8" id="nsg-6C-02b"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Evu-Qd-Lho" secondAttribute="bottom" constant="8" id="Gfe-rM-kRO"/>
+                <constraint firstAttribute="trailing" secondItem="Evu-Qd-Lho" secondAttribute="trailing" constant="8" id="IGr-GN-jJt"/>
+                <constraint firstItem="Evu-Qd-Lho" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="KaR-5p-p9L"/>
+                <constraint firstItem="Evu-Qd-Lho" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="wPh-E0-jga"/>
+            </constraints>
+            <size key="customSize" width="158" height="62"/>
+            <connections>
+                <outlet property="cardView" destination="Evu-Qd-Lho" id="cVu-ps-cUz"/>
+                <outlet property="categoryNameLabel" destination="psm-I1-BM5" id="WFI-hX-Ifu"/>
+            </connections>
+            <point key="canvasLocation" x="215.94202898550725" y="61.607142857142854"/>
+        </collectionViewCell>
+    </objects>
+</document>
