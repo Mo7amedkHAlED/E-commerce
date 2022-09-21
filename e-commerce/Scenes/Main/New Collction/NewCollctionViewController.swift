@@ -14,7 +14,7 @@ class NewCollctionViewController: UIViewController {
     @IBOutlet weak var productsCollectionView: UICollectionView!
     @IBOutlet weak var sortButton: UIButton!
     
-    
+    var hidden :Bool = true
     let images: [UIImage] = [UIImage(named: "lunchScreen")!,UIImage(named: "category1")!,UIImage(named: "category2")!]
     let subCategoriesNames: [String] = ["T-shirts", "Crop tops", "Hoodies", "ddd"]
     
@@ -22,10 +22,16 @@ class NewCollctionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
         registerCollectionView()
+        navigationController?.hidesBarsOnSwipe = true
     }
-     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        self.navigationController?.hidesBarsOnTap = true // by click hidden and apper
+    }
+  
+    
     func registerCollectionView(){
         subCategoriesCollectionView.register(UINib(nibName: "SubCategoriesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SubCategoriesCollectionViewCell")
         subCategoriesCollectionView.delegate = self
@@ -74,11 +80,11 @@ class NewCollctionViewController: UIViewController {
 extension NewCollctionViewController : CollectionView_Delegate_DataSource_FlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "ProductDetailsViewController")
-        navigationController?.pushViewController(viewController, animated: true)
+        let stryboard = UIStoryboard(name: "Main", bundle: nil) // to dispaly page which will go to it
+        let viewcontroller = stryboard.instantiateViewController(withIdentifier: "ProductDetailsViewController")
+        viewcontroller.modalPresentationStyle = .overFullScreen
+        navigationController?.pushViewController(viewcontroller, animated: true)
     }
-    
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -122,7 +128,7 @@ extension NewCollctionViewController {
         
         switch collectionView {
         case subCategoriesCollectionView:
-            let width = view.frame.width
+            let width = collectionView.frame.width
             let height = collectionView.frame.height - 16
             return CGSize(width: width / 3, height: height)
         default:

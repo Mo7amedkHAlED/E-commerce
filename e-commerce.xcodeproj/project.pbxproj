@@ -8,8 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		7F3E8B9A28D9423F00FC0A6F /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3E8B9928D9423F00FC0A6F /* MessagesViewController.swift */; };
+		7F3E8D1428D952D500FC0A6F /* MessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3E8D1228D952D500FC0A6F /* MessagesTableViewCell.swift */; };
+		7F3E8D1528D952D500FC0A6F /* MessagesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F3E8D1328D952D500FC0A6F /* MessagesTableViewCell.xib */; };
+		7F4DC4FF28DAEB61006B9EBC /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4DC4FE28DAEB61006B9EBC /* ForgotPasswordViewController.swift */; };
+		7FEEE55B28DAC66B00431B37 /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEEE55A28DAC66B00431B37 /* ProductDetailsViewController.swift */; };
+		7FEEE55F28DAD48B00431B37 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEEE55E28DAD48B00431B37 /* ChatListViewController.swift */; };
+		7FEEE56328DAD50200431B37 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEEE56128DAD50200431B37 /* ChatTableViewCell.swift */; };
+		7FEEE56428DAD50200431B37 /* ChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FEEE56228DAD50200431B37 /* ChatTableViewCell.xib */; };
 		EE1C65C228BD48600018BA29 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1C65C128BD48600018BA29 /* CardView.swift */; };
-		EE1D404E28CFB3A300E4E61F /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1D404D28CFB3A300E4E61F /* ProductDetailsViewController.swift */; };
 		EE3C6E0928A198C4007F78BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3C6E0828A198C4007F78BB /* AppDelegate.swift */; };
 		EE3C6E0B28A198C4007F78BB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3C6E0A28A198C4007F78BB /* SceneDelegate.swift */; };
 		EE3C6E0D28A198C4007F78BB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3C6E0C28A198C4007F78BB /* LoginViewController.swift */; };
@@ -39,8 +45,14 @@
 
 /* Begin PBXFileReference section */
 		7F3E8B9928D9423F00FC0A6F /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		7F3E8D1228D952D500FC0A6F /* MessagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesTableViewCell.swift; sourceTree = "<group>"; };
+		7F3E8D1328D952D500FC0A6F /* MessagesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessagesTableViewCell.xib; sourceTree = "<group>"; };
+		7F4DC4FE28DAEB61006B9EBC /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		7FEEE55A28DAC66B00431B37 /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProductDetailsViewController.swift; path = "e-commerce/Scenes/Main/ProductDetails/ProductDetailsViewController.swift"; sourceTree = SOURCE_ROOT; };
+		7FEEE55E28DAD48B00431B37 /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
+		7FEEE56128DAD50200431B37 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
+		7FEEE56228DAD50200431B37 /* ChatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatTableViewCell.xib; sourceTree = "<group>"; };
 		EE1C65C128BD48600018BA29 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		EE1D404D28CFB3A300E4E61F /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
 		EE3C6E0528A198C4007F78BB /* e-commerce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "e-commerce.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE3C6E0828A198C4007F78BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE3C6E0A28A198C4007F78BB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,9 +96,52 @@
 		7F3E8B9828D9420500FC0A6F /* Messages */ = {
 			isa = PBXGroup;
 			children = (
+				7F3E8D1128D9529200FC0A6F /* Cell */,
 				7F3E8B9928D9423F00FC0A6F /* MessagesViewController.swift */,
 			);
 			path = Messages;
+			sourceTree = "<group>";
+		};
+		7F3E8D1128D9529200FC0A6F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7F3E8D1228D952D500FC0A6F /* MessagesTableViewCell.swift */,
+				7F3E8D1328D952D500FC0A6F /* MessagesTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		7F4DC4FD28DADAE9006B9EBC /* ProductDetails */ = {
+			isa = PBXGroup;
+			children = (
+				7FEEE55A28DAC66B00431B37 /* ProductDetailsViewController.swift */,
+			);
+			path = ProductDetails;
+			sourceTree = "<group>";
+		};
+		7FEEE55C28DAD42A00431B37 /* ChatList */ = {
+			isa = PBXGroup;
+			children = (
+				7FEEE56028DAD4E000431B37 /* Cell */,
+				7FEEE55E28DAD48B00431B37 /* ChatListViewController.swift */,
+			);
+			path = ChatList;
+			sourceTree = "<group>";
+		};
+		7FEEE55D28DAD44900431B37 /* Message List */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Message List";
+			sourceTree = "<group>";
+		};
+		7FEEE56028DAD4E000431B37 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7FEEE56128DAD50200431B37 /* ChatTableViewCell.swift */,
+				7FEEE56228DAD50200431B37 /* ChatTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		EE018E0028AD6AE300F8200E /* Core */ = {
@@ -124,6 +179,7 @@
 			children = (
 				EE3C6E0C28A198C4007F78BB /* LoginViewController.swift */,
 				EE4C472D28AAC78500CE1902 /* SingUpViewController.swift */,
+				7F4DC4FE28DAEB61006B9EBC /* ForgotPasswordViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -143,14 +199,6 @@
 				EE4C472F28AACAAC00CE1902 /* ExUIView.swift */,
 			);
 			path = Extension;
-			sourceTree = "<group>";
-		};
-		EE1D404C28CFB37600E4E61F /* Product Details */ = {
-			isa = PBXGroup;
-			children = (
-				EE1D404D28CFB3A300E4E61F /* ProductDetailsViewController.swift */,
-			);
-			path = "Product Details";
 			sourceTree = "<group>";
 		};
 		EE3C6DFC28A198C4007F78BB = {
@@ -235,8 +283,10 @@
 		EE69A97A28AD72E900B86B73 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				7F4DC4FD28DADAE9006B9EBC /* ProductDetails */,
+				7FEEE55D28DAD44900431B37 /* Message List */,
+				7FEEE55C28DAD42A00431B37 /* ChatList */,
 				7F3E8B9828D9420500FC0A6F /* Messages */,
-				EE1D404C28CFB37600E4E61F /* Product Details */,
 				EEFB597628BFED8B00B8DB48 /* Sort By */,
 				EE40984E28B6A8DD00CFC8A4 /* New Collction */,
 				EE40984C28B6A8A200CFC8A4 /* Home  */,
@@ -324,6 +374,8 @@
 				EE69A98128AD75A500B86B73 /* CategoriesCollectionViewCell.xib in Resources */,
 				EE4C473928AACFBD00CE1902 /* Roboto-Light.ttf in Resources */,
 				EE4C473828AACFBD00CE1902 /* Roboto-Regular.ttf in Resources */,
+				7FEEE56428DAD50200431B37 /* ChatTableViewCell.xib in Resources */,
+				7F3E8D1528D952D500FC0A6F /* MessagesTableViewCell.xib in Resources */,
 				EEFB597428BFDCE500B8DB48 /* ListProductCollectionViewCell.xib in Resources */,
 				EE40985528B6AFB700CFC8A4 /* SubCategoriesCollectionViewCell.xib in Resources */,
 				EE4C473A28AACFBD00CE1902 /* Roboto-Black.ttf in Resources */,
@@ -343,17 +395,21 @@
 			files = (
 				EE40985428B6AFB700CFC8A4 /* SubCategoriesCollectionViewCell.swift in Sources */,
 				EE4C473028AACAAC00CE1902 /* ExUIView.swift in Sources */,
+				7F3E8D1428D952D500FC0A6F /* MessagesTableViewCell.swift in Sources */,
 				EE69A98028AD75A500B86B73 /* CategoriesCollectionViewCell.swift in Sources */,
 				EE3C6E0D28A198C4007F78BB /* LoginViewController.swift in Sources */,
+				7FEEE56328DAD50200431B37 /* ChatTableViewCell.swift in Sources */,
 				EE3C6E0928A198C4007F78BB /* AppDelegate.swift in Sources */,
+				7FEEE55F28DAD48B00431B37 /* ChatListViewController.swift in Sources */,
 				EE4C472E28AAC78600CE1902 /* SingUpViewController.swift in Sources */,
 				EE7FC04828C68301007C7434 /* Typealias.swift in Sources */,
-				EE1D404E28CFB3A300E4E61F /* ProductDetailsViewController.swift in Sources */,
 				EE3C6E0B28A198C4007F78BB /* SceneDelegate.swift in Sources */,
+				7FEEE55B28DAC66B00431B37 /* ProductDetailsViewController.swift in Sources */,
 				EEFB596E28BFDCC400B8DB48 /* GridProductCollectionViewCell.swift in Sources */,
 				EEFB597828BFEDCC00B8DB48 /* SortByViewController.swift in Sources */,
 				EE40985028B6A92500CFC8A4 /* NewCollctionViewController.swift in Sources */,
 				EE1C65C228BD48600018BA29 /* CardView.swift in Sources */,
+				7F4DC4FF28DAEB61006B9EBC /* ForgotPasswordViewController.swift in Sources */,
 				EEFB597328BFDCE500B8DB48 /* ListProductCollectionViewCell.swift in Sources */,
 				7F3E8B9A28D9423F00FC0A6F /* MessagesViewController.swift in Sources */,
 				EE69A97D28AD733E00B86B73 /* HomeViewController.swift in Sources */,
@@ -504,7 +560,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = G2KS84NP5P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "e-commerce/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -535,7 +591,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = G2KS84NP5P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "e-commerce/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

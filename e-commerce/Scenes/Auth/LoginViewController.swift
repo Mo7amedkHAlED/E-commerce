@@ -17,6 +17,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         emailView.addLayer()
         passwordView.addLayer()
         loginButton.addLayer()
@@ -49,6 +50,12 @@ class LoginViewController: UIViewController {
     @IBAction func didTappedSingup(_ sender: UIButton) {
         let stroyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = stroyboard.instantiateViewController(withIdentifier: "SingUpViewController")
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @IBAction func ForgotPassword(_ sender: UIButton) {
+        let stroyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = stroyboard.instantiateViewController(withIdentifier: "ForgotPasswordViewController")
         navigationController?.pushViewController(viewController, animated: true)
     }
     

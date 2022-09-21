@@ -35,7 +35,7 @@ class HomeViewController: UIViewController{
         collectionView.register(UINib(nibName: "CategoriesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CategoriesCollectionViewCell")
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.reloadData()
+        collectionView.reloadData() 
          
     }
 
