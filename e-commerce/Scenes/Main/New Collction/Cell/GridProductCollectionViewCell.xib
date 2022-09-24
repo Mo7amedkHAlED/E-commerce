@@ -83,6 +83,9 @@
                         </constraints>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <state key="normal" image="favorite2"/>
+                        <connections>
+                            <action selector="favoriteButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="hfv-5e-qF8"/>
+                        </connections>
                     </button>
                 </subviews>
             </view>
@@ -97,6 +100,10 @@
             </constraints>
             <size key="customSize" width="354" height="321"/>
             <connections>
+                <outlet property="desLabel" destination="V2m-8f-ces" id="0Dk-qT-GfR"/>
+                <outlet property="favoriteButton" destination="dGP-g6-TGx" id="D0o-Ly-1OY"/>
+                <outlet property="nameLabel" destination="JEE-bB-cMu" id="X6e-Zl-lds"/>
+                <outlet property="priceLabel" destination="y8I-SK-CQa" id="Xh3-Vr-z52"/>
                 <outlet property="productImage" destination="s0q-gl-neP" id="pas-gk-wGt"/>
             </connections>
             <point key="canvasLocation" x="356.52173913043481" y="190.51339285714286"/>

@@ -7,11 +7,18 @@
 
 import UIKit
 
+protocol sortBy : AnyObject {
+    func didChangeSort(title:String)
+}
 class SortByViewController: UIViewController {
     
     @IBOutlet var listViews: [UIView]! // to connect with multi UiView
     
     @IBOutlet var listLabels: [UILabel]! // to connect with multi UILabel
+    
+    var delegate : sortBy?
+    
+    var sortArray :[ String] = ["Popular","Newest","Customer review","Price: Highest to low"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +41,8 @@ class SortByViewController: UIViewController {
     
     
     @IBAction func didTappedListButtons(_ sender: UIButton) { // to take action
-        print("Sender tag is:", sender.tag)
+        let title = sortArray[sender.tag] // to send number of index 
+        delegate?.didChangeSort(title: title)
         listViews.forEach({$0.backgroundColor = .white})//to select only one item 
         listViews.first(where: {$0.tag == sender.tag })?.backgroundColor = .red
         

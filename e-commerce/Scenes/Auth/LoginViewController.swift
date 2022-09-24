@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import MOLH
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var emailView: UIView!
@@ -43,7 +43,7 @@ class LoginViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let tabbar = storyboard.instantiateViewController(withIdentifier: "TabBarController")
         let nvg = UINavigationController(rootViewController: tabbar)
-        nvg.modalPresentationStyle = .fullScreen
+        nvg.modalPresentationStyle = .overFullScreen
          present(nvg, animated: true)
     }
     
@@ -59,8 +59,18 @@ class LoginViewController: UIViewController {
         navigationController?.pushViewController(viewController, animated: true)
     }
     
+
+    @IBAction func EnButton(_ sender: UIButton) {
+        //MARK: - to change Language
+        MOLH.setLanguageTo(MOLHLanguage.currentAppleLanguage() == "en" ? "en" : "en")
+        MOLH.reset(transition: .transitionCrossDissolve, duration: 0.25)
+
+    }
+    @IBAction func ArButton(_ sender: UIButton) {
+        //MARK: - to change Language
+
+        MOLH.setLanguageTo(MOLHLanguage.currentAppleLanguage() == "ar" ? "ar" : "ar")
+        MOLH.reset(transition: .transitionCrossDissolve, duration: 0.25)
+    }
     
 }
-
-
-

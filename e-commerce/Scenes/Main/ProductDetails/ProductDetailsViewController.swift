@@ -11,12 +11,27 @@ class ProductDetailsViewController: UIViewController {
 
     @IBOutlet weak var productImage: UICollectionView!
     @IBOutlet weak var recommendProduct: UICollectionView!
-    
+    @IBOutlet weak var favoriteButton: UIButton!
+    var Product :ProductModel? // define that is your type = struct
+    // to catch info from last screen
     var image = [UIImage(named: "category1"),UIImage(named: "category2"),UIImage(named: "category1")]
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = Product?.title
+        ChangeFavoriteButtonImage() // to be like as before page
         registerCollectionView()
         // Do any additional setup after loading the view.
+        
+    }
+    func ChangeFavoriteButtonImage(){
+        
+        if Product?.isFav == true{
+            let image = UIImage(named: "favorite2")
+            favoriteButton.setImage(image, for: .normal)
+        }else{
+            let image = UIImage(named: "favorite1")
+            favoriteButton.setImage(image, for: .normal)
+        }
     }
     func registerCollectionView(){
         // Product Image collection view
@@ -28,6 +43,17 @@ class ProductDetailsViewController: UIViewController {
         recommendProduct.delegate = self
         recommendProduct.dataSource = self
     
+    }
+    @IBAction func favoriteButton(_ sender: UIButton) {
+        let isFav = Product?.isFav ?? false
+        Product?.isFav = !isFav
+        ChangeFavoriteButtonImage() // to take control and change in anther pages
+        //MARK: - to create NotificationCenter (post)
+        guard let ProductIsFavorite = Product?.isFav else { return }
+        guard let ProductId = Product?.id else { return }
+        let userInfo : [String:Any] = ["id":ProductId,"isFav":ProductIsFavorite] // data which you need to send to change in other pages
+        NotificationCenter.default.post(name: Notification.Name("didTappedFavoriteButton"), object: nil,userInfo: userInfo)
+        
     }
 }
 

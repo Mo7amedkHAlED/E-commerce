@@ -6,20 +6,33 @@
 //
 
 import UIKit
-
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+import MOLH
+class SceneDelegate: UIResponder, UIWindowSceneDelegate,MOLHResetable {
     var window: UIWindow?
-
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        configureMOLH ()
         rootViewController()
         guard let _ = (scene as? UIWindowScene) else { return }
     }
     
+    func configureMOLH (){
+        MOLHLanguage.setDefaultLanguage("EN")
+        MOLH.shared.activate(true)
+         
+    }
+    
+    func reset() {
+        //MARK: - to Know What page am I on?
+        if let delegate = UIApplication.shared.connectedScenes.first?.delegate{
+            UIView.transition(with:((delegate as? SceneDelegate)?.window)!, duration: 0.5, options: .transitionFlipFromLeft, animations: {}) { _ in // not return nothing
+                self.rootViewController()
+            }
+        }
+    }
+    //MARK: - root View controller يعني الصفحه اللي هي المفروض تتفتح اول لم البرنامج يشتغل
     func rootViewController(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")

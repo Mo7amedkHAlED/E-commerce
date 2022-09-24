@@ -1,0 +1,144 @@
+
+/* Class = "UIButton"; normalTitle = "Forgot password?"; ObjectID = "088-1m-rQ5"; */
+"088-1m-rQ5.normalTitle" = "هل نسيت كلمه السر?";
+
+/* Class = "UITextField"; placeholder = "password"; ObjectID = "1hP-y8-17S"; */
+"1hP-y8-17S.placeholder" = "كلمه السر";
+
+/* Class = "UITextField"; placeholder = "password"; ObjectID = "1nU-zd-7Xv"; */
+"1nU-zd-7Xv.placeholder" = "كلمه السر";
+
+/* Class = "UITextField"; text = "dasdasdasd"; ObjectID = "1nU-zd-7Xv"; */
+"1nU-zd-7Xv.text" = "dasdasdasd";
+
+/* Class = "UITabBarItem"; title = "Item 1"; ObjectID = "5At-hd-zps"; */
+"5At-hd-zps.title" = "Item 1";
+
+/* Class = "UILabel"; text = "H&M"; ObjectID = "6MV-45-VVG"; */
+"6MV-45-VVG.text" = "H&M";
+
+/* Class = "UILabel"; text = "Shipping info "; ObjectID = "6za-Gx-jEn"; */
+"6za-Gx-jEn.text" = "Shipping info ";
+
+/* Class = "UITabBarItem"; title = "Bag"; ObjectID = "7TA-vR-4RL"; */
+"7TA-vR-4RL.title" = "الحقيبه";
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "8vM-QC-h7r"; */
+"8vM-QC-h7r.title" = "الصفحه الرئيسيه";
+
+/* Class = "UILabel"; text = "Sort By"; ObjectID = "9R0-65-kWD"; */
+"9R0-65-kWD.text" = "فرز بواسطه";
+
+/* Class = "UILabel"; text = "$51"; ObjectID = "9tP-9i-lZ0"; */
+"9tP-9i-lZ0.text" = "$51";
+
+/* Class = "UILabel"; text = "Customer review"; ObjectID = "C1K-xI-ZIl"; */
+"C1K-xI-ZIl.text" = "مراجعه العملاء";
+
+/* Class = "UIButton"; normalTitle = "Already have an account?"; ObjectID = "CP8-Bt-rpk"; */
+"CP8-Bt-rpk.normalTitle" = "هل لديك حساب بالفعل";
+
+/* Class = "UILabel"; text = "(4)"; ObjectID = "DQG-Gz-3Tg"; */
+"DQG-Gz-3Tg.text" = "(4)";
+
+/* Class = "UINavigationItem"; title = "Sing up"; ObjectID = "F9f-Ee-fS5"; */
+"F9f-Ee-fS5.title" = "انشاء حساب";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "GHu-WE-tdT"; */
+"GHu-WE-tdT.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Price: Highest to low"; ObjectID = "GiA-R6-wwC"; */
+"GiA-R6-wwC.text" = "السعر : من الاقل للاعلي";
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "GsV-Oj-jsg"; */
+"GsV-Oj-jsg.title" = "الصفحه الرئيسيه";
+
+/* Class = "UITextField"; placeholder = "email"; ObjectID = "Jgs-aI-cQ4"; */
+"Jgs-aI-cQ4.placeholder" = "البريد الالكتروني";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "KFO-ab-jqV"; */
+"KFO-ab-jqV.placeholder" = "الاسم";
+
+/* Class = "UITabBarItem"; title = "Favorite"; ObjectID = "Kc5-KJ-VpM"; */
+"Kc5-KJ-VpM.title" = "المفضل";
+
+/* Class = "UILabel"; text = "Newest"; ObjectID = "LbL-FP-sI9"; */
+"LbL-FP-sI9.text" = "الاجداد";
+
+/* Class = "UIButton"; normalTitle = "Filters"; ObjectID = "NOl-xN-GcF"; */
+"NOl-xN-GcF.normalTitle" = "Filters";
+
+/* Class = "UITextField"; placeholder = "email"; ObjectID = "NiY-ZW-ajl"; */
+"NiY-ZW-ajl.placeholder" = "البريد الالكتروني";
+
+/* Class = "UITabBarItem"; title = "Profile"; ObjectID = "QDq-eq-bU7"; */
+"QDq-eq-bU7.title" = "الحساب الشخصي";
+
+/* Class = "UINavigationItem"; title = "Forgot Password"; ObjectID = "QQJ-Ga-lej"; */
+"QQJ-Ga-lej.title" = "نسيت كلمه السر";
+
+/* Class = "UIButton"; configuration.title = "Close"; ObjectID = "Sq0-KQ-yxi"; */
+"Sq0-KQ-yxi.configuration.title" = "Close";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Sq0-KQ-yxi"; */
+"Sq0-KQ-yxi.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "YHN-24-Ulb"; */
+"YHN-24-Ulb.normalTitle" = "تسجيل الدخول";
+
+/* Class = "UILabel"; text = "Support"; ObjectID = "at8-UI-UcG"; */
+"at8-UI-UcG.text" = "Support";
+
+/* Class = "UIButton"; configuration.title = "Add to Cart"; ObjectID = "bIE-wh-X36"; */
+"bIE-wh-X36.configuration.title" = "Add to Cart";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "bIE-wh-X36"; */
+"bIE-wh-X36.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Price: Lowest to High"; ObjectID = "cnS-Yz-Hi1"; */
+"cnS-Yz-Hi1.normalTitle" = "السعر : من الاقل الي الاعلي";
+
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "dWU-us-aIb"; */
+"dWU-us-aIb.normalTitle" = "ارسال";
+
+/* Class = "UILabel"; text = "Light blouse in soft cotton jersey with decorative buttons down the front and a wide ,"; ObjectID = "fUY-bP-B5h"; */
+"fUY-bP-B5h.text" = "Light blouse in soft cotton jersey with decorative buttons down the front and a wide ,";
+
+/* Class = "UITabBarItem"; title = "Chat"; ObjectID = "fgE-Hn-pal"; */
+"fgE-Hn-pal.title" = "الدردشه";
+
+/* Class = "UILabel"; text = "12 item"; ObjectID = "g6l-Lw-Yce"; */
+"g6l-Lw-Yce.text" = "12 item";
+
+/* Class = "UILabel"; text = "Please,enter your email address.You will receive a link to creat a new password "; ObjectID = "grY-4c-jPg"; */
+"grY-4c-jPg.text" = "من فضلك أدخل عنوان بريدك الإلكتروني ، سوف تتلقى رابطًا لإنشاء كلمة مرور جديدة ";
+
+/* Class = "UITextField"; placeholder = "email"; ObjectID = "jx1-Me-g5E"; */
+"jx1-Me-g5E.placeholder" = "البريد الالكتروني";
+
+/* Class = "UILabel"; text = "Light Biouse"; ObjectID = "jyQ-gs-AVH"; */
+"jyQ-gs-AVH.text" = "Light Biouse";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "kX8-D4-ibp"; */
+"kX8-D4-ibp.title" = "Item";
+
+/* Class = "UIButton"; normalTitle = "Sing up"; ObjectID = "nYN-vR-Wkp"; */
+"nYN-vR-Wkp.normalTitle" = "انشاء حساب";
+
+/* Class = "UILabel"; text = "You can also like this "; ObjectID = "nYf-dx-FYg"; */
+"nYf-dx-FYg.text" = "You can also like this ";
+
+/* Class = "UILabel"; text = "Black"; ObjectID = "oIO-2t-z83"; */
+"oIO-2t-z83.text" = "Black";
+
+/* Class = "UIButton"; normalTitle = "Do not have an account ? Sing up"; ObjectID = "qlb-PS-tpV"; */
+"qlb-PS-tpV.normalTitle" = "قم بانشاء حساب";
+
+/* Class = "UINavigationItem"; title = "Login"; ObjectID = "y8h-mM-xKq"; */
+"y8h-mM-xKq.title" = "تسجيل دخول";
+
+/* Class = "UILabel"; text = "Size"; ObjectID = "yce-QF-2g2"; */
+"yce-QF-2g2.text" = "المقاس";
+
+/* Class = "UILabel"; text = "Popular"; ObjectID = "ydI-Ri-hQt"; */
+"ydI-Ri-hQt.text" = "محبوب";
