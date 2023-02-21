@@ -21,14 +21,14 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q7b-Wo-fa3" customClass="CardView" customModule="e_commerce" customModuleProvider="target">
                         <rect key="frame" x="16" y="16" width="322" height="289"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="category2" translatesAutoresizingMaskIntoConstraints="NO" id="s0q-gl-neP">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="category2" translatesAutoresizingMaskIntoConstraints="NO" id="s0q-gl-neP">
                                 <rect key="frame" x="0.0" y="0.0" width="322" height="110"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="Geu-QN-pWW"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Kov-L8-eFv">
-                                <rect key="frame" x="8" y="118" width="140.5" height="163"/>
+                                <rect key="frame" x="8" y="118" width="306" height="163"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pullobver" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JEE-bB-cMu">
                                         <rect key="frame" x="0.0" y="0.0" width="71" height="39.5"/>
@@ -68,6 +68,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="s0q-gl-neP" firstAttribute="top" secondItem="q7b-Wo-fa3" secondAttribute="top" id="84s-e3-ryz"/>
+                            <constraint firstAttribute="trailing" secondItem="Kov-L8-eFv" secondAttribute="trailing" constant="8" id="Cnn-uW-cU3"/>
                             <constraint firstAttribute="trailing" secondItem="s0q-gl-neP" secondAttribute="trailing" id="EPZ-Tl-DsH"/>
                             <constraint firstItem="Kov-L8-eFv" firstAttribute="top" secondItem="s0q-gl-neP" secondAttribute="bottom" constant="8" id="Rwa-m6-GNd"/>
                             <constraint firstAttribute="bottom" secondItem="Kov-L8-eFv" secondAttribute="bottom" constant="8" id="UZb-Hb-D1Z"/>

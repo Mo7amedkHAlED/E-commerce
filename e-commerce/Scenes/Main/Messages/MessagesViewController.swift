@@ -17,7 +17,11 @@ class MessagesViewController: UIViewController {
         // Do any additional setup after loading the view.
         registerCollectionView()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.topItem?.title = "Messages" // to make title
+
+    }
     func registerCollectionView(){
         tableview.register(UINib(nibName: "MessagesTableViewCell", bundle: nil), forCellReuseIdentifier: "MessagesTableViewCell")
         tableview.delegate = self
@@ -35,7 +39,7 @@ extension MessagesViewController : Table_Delegate_DataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessagesTableViewCell", for: indexPath) as! MessagesTableViewCell
-        
+        cell.selectionStyle = .none // disable the selection shadow
         return cell
         
     }

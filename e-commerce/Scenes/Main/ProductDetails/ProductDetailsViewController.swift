@@ -6,26 +6,34 @@
 //
 
 import UIKit
+import Alamofire
+import ProgressHUD
 
 class ProductDetailsViewController: UIViewController {
 
     @IBOutlet weak var productImage: UICollectionView!
     @IBOutlet weak var recommendProduct: UICollectionView!
     @IBOutlet weak var favoriteButton: UIButton!
-    var Product :ProductModel? // define that is your type = struct
-    // to catch info from last screen
+    @IBOutlet weak var NameLabel: UILabel!
+    @IBOutlet weak var DescLAbel: UILabel!
+    @IBOutlet weak var MoreDatails: UILabel!
+    var Product :CategoryDetailsDatum? // define that is your type = struct
+    var categoriesId : CategoryDatum?
+
     var image = [UIImage(named: "category1"),UIImage(named: "category2"),UIImage(named: "category1")]
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = Product?.title
-        ChangeFavoriteButtonImage() // to be like as before page
+        title = Product?.name
+        ChangeFavoriteButtonImage()
         registerCollectionView()
-        // Do any additional setup after loading the view.
+        NameLabel.text = Product?.name
+        DescLAbel.text = Product?.datumDescription
+        MoreDatails.text = Product?.datumDescription
         
     }
     func ChangeFavoriteButtonImage(){
         
-        if Product?.isFav == true{
+        if Product?.inFavorites == true{
             let image = UIImage(named: "favorite2")
             favoriteButton.setImage(image, for: .normal)
         }else{
@@ -34,29 +42,45 @@ class ProductDetailsViewController: UIViewController {
         }
     }
     func registerCollectionView(){
-        // Product Image collection view
         productImage.register(UINib(nibName: "CategoriesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CategoriesCollectionViewCell")
         productImage.delegate = self
         productImage.dataSource = self
-        //recommend Product collection view
         recommendProduct.register(UINib(nibName: "GridProductCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "GridProductCollectionViewCell")
         recommendProduct.delegate = self
         recommendProduct.dataSource = self
     
     }
     @IBAction func favoriteButton(_ sender: UIButton) {
-        let isFav = Product?.isFav ?? false
-        Product?.isFav = !isFav
-        ChangeFavoriteButtonImage() // to take control and change in anther pages
+        let isFav = Product?.inFavorites ?? false
+        Product?.inFavorites = !isFav
+        ChangeFavoriteButtonImage()
         //MARK: - to create NotificationCenter (post)
-        guard let ProductIsFavorite = Product?.isFav else { return }
+        guard let ProductIsFavorite = Product?.inFavorites else { return }
         guard let ProductId = Product?.id else { return }
-        let userInfo : [String:Any] = ["id":ProductId,"isFav":ProductIsFavorite] // data which you need to send to change in other pages
+        let userInfo : [String:Any] = ["id":ProductId,"isFav":ProductIsFavorite]
         NotificationCenter.default.post(name: Notification.Name("didTappedFavoriteButton"), object: nil,userInfo: userInfo)
         
     }
+    @IBAction func AddToCart(_ sender: UIButton) {
+        AddBagItemApi()
+        
+    }
+    func AddBagItemApi(){
+        let itemId = (Product?.id!)!
+        let headers: HTTPHeaders = ["Authorization":"buuEt2XlValHokbFBIvIq6ZKW23NuzOSwKs4EExcDqDnOLkrLKZ0RTXNNAhk5LgjFShA6i","lang" : "en"]
+        let params:[String:Int] = ["product_id": itemId]
+        guard let url = URL(string: "https://student.valuxapps.com/api/carts")else {return}
+        ProgressHUD.show()
+        AF.request(url, method: .post,parameters: params,encoding: JSONEncoding.default,headers:headers).responseDecodable(of: BaseResponse<AddFavModel>.self) { respone in
+            switch respone.result{
+            case.success(let item):
+                ProgressHUD.showSucceed()
+            case.failure(let error):
+                ProgressHUD.showError()
+            }
+        }
+    }
 }
-
 extension ProductDetailsViewController:CollectionView_Delegate_DataSource_FlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -72,13 +96,14 @@ extension ProductDetailsViewController:CollectionView_Delegate_DataSource_FlowLa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch collectionView {
         case productImage :
+            
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoriesCollectionViewCell", for: indexPath) as! CategoriesCollectionViewCell
-            cell.categoryImage.image = image[indexPath.row]
+            cell.categoryImage.loadImage(urlString: (Product?.image)!)
             cell.categoryNameLabel.isHidden = true
             return cell
         default :
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GridProductCollectionViewCell", for: indexPath) as! GridProductCollectionViewCell
-           cell.productImage.image = image[indexPath.row]
+            cell.productImage.loadImage(urlString: (Product?.image)!)
             return cell
     
         }
@@ -86,7 +111,6 @@ extension ProductDetailsViewController:CollectionView_Delegate_DataSource_FlowLa
     
 }
 
-// extension for layout
 extension ProductDetailsViewController{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch collectionView {

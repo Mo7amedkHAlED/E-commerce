@@ -22,26 +22,26 @@
                 <rect key="frame" x="0.0" y="0.0" width="393" height="309"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="jOQ-rr-eIt">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="309"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="20424739" translatesAutoresizingMaskIntoConstraints="NO" id="jOQ-rr-eIt">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="235"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New collection" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1s-14-P2L">
-                        <rect key="frame" x="78.5" y="137" width="236" height="35.5"/>
-                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="30"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New collection" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1s-14-P2L">
+                        <rect key="frame" x="8" y="269" width="377" height="32"/>
+                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="27"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="b1s-14-P2L" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="0Q6-w8-L0m"/>
-                <constraint firstItem="b1s-14-P2L" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="DwV-2R-V4U"/>
+                <constraint firstAttribute="bottom" secondItem="b1s-14-P2L" secondAttribute="bottom" constant="8" id="0p2-38-Yxh"/>
                 <constraint firstItem="jOQ-rr-eIt" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Fug-s8-cd7"/>
                 <constraint firstItem="jOQ-rr-eIt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="GyF-LO-BMg"/>
-                <constraint firstAttribute="bottom" secondItem="jOQ-rr-eIt" secondAttribute="bottom" id="PQy-Gc-K5s"/>
+                <constraint firstItem="b1s-14-P2L" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="Nx4-Zd-YMf"/>
+                <constraint firstAttribute="bottom" secondItem="jOQ-rr-eIt" secondAttribute="bottom" constant="74" id="PQy-Gc-K5s"/>
+                <constraint firstAttribute="trailing" secondItem="b1s-14-P2L" secondAttribute="trailing" constant="8" id="Xbl-wO-0rb"/>
                 <constraint firstAttribute="trailing" secondItem="jOQ-rr-eIt" secondAttribute="trailing" id="am0-Mf-Cwz"/>
-                <constraint firstItem="b1s-14-P2L" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.6" id="yqS-fE-ZP7"/>
             </constraints>
             <size key="customSize" width="393" height="309"/>
             <connections>
@@ -52,6 +52,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="lunchScreen" width="375" height="812"/>
+        <image name="20424739" width="3171" height="5048"/>
     </resources>
 </document>

@@ -10,6 +10,8 @@
 //NotificationCenter used to update data in before pages(one to more)
 //NotificationCenter used in Product Details 
 import UIKit
+import Alamofire
+import ProgressHUD
 
 class NewCollctionViewController: UIViewController, sortBy, FavoriteButton {
    
@@ -18,47 +20,58 @@ class NewCollctionViewController: UIViewController, sortBy, FavoriteButton {
     @IBOutlet weak var productsCollectionView: UICollectionView!
     @IBOutlet weak var sortButton: UIButton!
     
+    @IBOutlet weak var FilterButton: UIButton!
     var hidden :Bool = true
     let images: [UIImage] = [UIImage(named: "lunchScreen")!,UIImage(named: "category1")!,UIImage(named: "category2")!]
-    let subCategoriesNames: [String] = ["T-shirts", "Crop tops", "Hoodies", "ddd"]
-    
+    let subCategoriesNames: [String] = ["Electrionic Devices" , "Prevent Corona" , "sports" , "Clothes"]
+    var categoriesId : CategoryDatum?
     var isList: Bool = true
-    var product = [ProductModel]()
+    var product = [CategoryDetailsDatum]()
     //MARK: -  NotificationCenter prevent Memmoery Lack
     deinit{
         NotificationCenter.default.removeObserver(self) // return to this class
     }
     override func viewDidLoad(){
         super.viewDidLoad()
-        product=[
-            .init(id: 1, image: "Pullover", title: "Pullover ", des: "Mango", price: Int(150.99), isFav: false),
-            .init(id: 2, image: "T-shirt", title: "T-shirt ", des: "Mango", price: 200 , isFav: false),
-            .init(id: 3, image: "category1", title: "T-shirt ", des: "Mango", price: Int(170.99), isFav: false),
-        ]
+        CategoryDetails()
         addobserve()
         registerCollectionView()
         navigationController?.hidesBarsOnSwipe = true
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        
-        self.navigationController?.hidesBarsOnTap = true // by click hidden and apper
+        self.navigationController?.hidesBarsOnTap = true
     }
+    
     //MARK: - to create NotificationCenter (lisent)
-    func addobserve(){ // self بمعني هنا
+    func addobserve(){
         
         NotificationCenter.default.addObserver(self, selector: #selector(favoriteNotification(_:)), name: Notification.Name("didTappedFavoriteButton"), object: nil)
     }
-    //  #selector(T##@objc method)
     @objc func favoriteNotification(_ notification:Notification){
-        let id = notification.userInfo?["id"] as! Int // بمعني اني بقوله هات القيمه اللي متخزنه في المفتاح ده
+        let id = notification.userInfo?["id"] as! Int
         let ISFavorite = notification.userInfo?["isFav"] as! Bool
-        product.first(where: {$0.id == id})? .isFav = ISFavorite  //لو وصلت لللرقم ده قم بتغير الي المفضل اللي جيلك ده
-        // can use for whitout closure
+        product.first(where: {$0.id == id})? .inFavorites = ISFavorite
         productsCollectionView.reloadData()
         print("id = \(id)")
     }
     
+    func CategoryDetails(){
+        guard let url = URL(string:"https://student.valuxapps.com/api/categories/\(((categoriesId?.id!)!))") else{return}
+        ProgressHUD.show("Loading....🥺")
+        let header : HTTPHeaders = [.init(name: "lang", value: "en")]
+        AF.request(url, method: .get, encoding: JSONEncoding.default,headers: header).responseDecodable(of: BaseResponse<CategoryDetailsModel>.self) { response in
+            switch response.result{
+            case.success(let CategoryDetails):
+                ProgressHUD.dismiss()
+                self.product = CategoryDetails.data?.data ?? []
+                self.productsCollectionView.reloadData()
+            case.failure(let error):
+                ProgressHUD.showError()
+                
+            }
+        }
+    }
     
     
     
@@ -96,7 +109,7 @@ class NewCollctionViewController: UIViewController, sortBy, FavoriteButton {
         viewController.delegate = self
         viewController.modalPresentationStyle = .overFullScreen
         
-        //MARk:- additional layout to the view show from button 
+        // MARK: -additional layout to the view show from button
         
         let transtion = CATransition()
         transtion.duration = 0.2
@@ -108,6 +121,23 @@ class NewCollctionViewController: UIViewController, sortBy, FavoriteButton {
     func didChangeSort(title: String) {
         sortButton.setTitle(title, for: .normal)
     }
+    @IBAction func FiltersButtonAction(_ sender: UIButton) {
+        goToFiltersViewController()
+    }
+    func goToFiltersViewController(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "FilterViewController") as! FilterViewController
+        viewController.delegate = self
+        viewController.modalPresentationStyle = .overFullScreen
+        
+       //MARK: - additional layout to the view show from button
+        
+        let transtion = CATransition()
+        transtion.duration = 0.2
+        transtion.type = .fade
+        view.window?.layer.add(transtion, forKey: kCATransition)
+        present(viewController, animated: false)
+    }
     
 }
 
@@ -115,10 +145,11 @@ class NewCollctionViewController: UIViewController, sortBy, FavoriteButton {
 extension NewCollctionViewController : CollectionView_Delegate_DataSource_FlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let stryboard = UIStoryboard(name: "Main", bundle: nil) // to dispaly page which will go to it
-        let viewcontroller = stryboard.instantiateViewController(withIdentifier: "ProductDetailsViewController") as! ProductDetailsViewController
-        viewcontroller.Product = product[indexPath.row] // to pass values to next view controller
-        
+        // MARK: - to dispaly page which will go to it
+        let Storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewcontroller = Storyboard.instantiateViewController(withIdentifier: "ProductDetailsViewController") as! ProductDetailsViewController
+        // MARK: - to send data To ProductDetailsViewController
+        viewcontroller.Product = product[indexPath.row]
         viewcontroller.modalPresentationStyle = .overFullScreen
         navigationController?.pushViewController(viewcontroller, animated: true)
     }
@@ -126,7 +157,7 @@ extension NewCollctionViewController : CollectionView_Delegate_DataSource_FlowLa
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == subCategoriesCollectionView {
-            return 2
+            return subCategoriesNames.count
         }else if collectionView == productsCollectionView {
             return product.count
         }else{
@@ -145,32 +176,29 @@ extension NewCollctionViewController : CollectionView_Delegate_DataSource_FlowLa
         default:
             if isList == true {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListProductCollectionViewCell", for: indexPath) as! ListProductCollectionViewCell
-                cell.productImage.image = UIImage(named: product[indexPath.row].image)
-                cell.nameLabel.text = product[indexPath.row].title
-                cell.desLabel.text = product[indexPath.row].des
-                cell.priceLAbel.text = String("$\(product[indexPath.row].price)")
+                cell.product2 = product[indexPath.row]
+                cell.productImage.loadImage(urlString: product[indexPath.row].image ?? "")
+                cell.nameLabel.text = product[indexPath.row].name
+                cell.desLabel.text = product[indexPath.row].datumDescription
+                cell.priceLAbel.text = String(format: "%.1f",(product[indexPath.row].price)!)
                 cell.delegate = self
                 cell.row = indexPath.row
-                let image = product[indexPath.row].isFav == true ? UIImage(named: "favorite2") : UIImage(named: "favorite1")
+                let image = product[indexPath.row].inFavorites == true ? UIImage(named: "favorite2") : UIImage(named: "favorite1")
                 cell.FavoriteButton.setImage(image, for: .normal)
                 return cell
             }else{
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GridProductCollectionViewCell", for: indexPath) as!GridProductCollectionViewCell
-                cell.productImage.image = UIImage(named: product[indexPath.row].image)
-                cell.nameLabel.text = product[indexPath.row].title
-                cell.desLabel.text = product[indexPath.row].des
-                cell.priceLabel.text = String("$\(product[indexPath.row].price) ")
+                cell.product1 = product[indexPath.row]
+                cell.productImage.loadImage(urlString: product[indexPath.row].image ?? "")
+                cell.nameLabel.text = product[indexPath.row].name
+                cell.desLabel.text = product[indexPath.row].datumDescription
+                cell.priceLabel.text = String(format: "%.1f",(product[indexPath.row].price)!)
                 cell.row = indexPath.row
                 cell.didTappedFavroiteButtonClosure = { [weak self]row in
                     guard let self = self else { return }
                     self.didTappedFavoriteButton(row)
-                    /* sالسطر اللي فوق ده بدل الثلاثه دول بيتم استدعاء الداله من البرتكول
-                    let isFavorite = self.product[row].isFav
-                    self.product[row].isFav = !isFavorite
-                    self.productsCollectionView.reloadData()
-                     */
                 }
-                let image = product[indexPath.row].isFav == true ? UIImage(named: "favorite2") : UIImage(named: "favorite1")
+                let image = product[indexPath.row].inFavorites == true ? UIImage(named: "favorite2") : UIImage(named: "favorite1")
                 cell.favoriteButton.setImage(image, for: .normal)
                 return cell
             }
@@ -180,9 +208,9 @@ extension NewCollctionViewController : CollectionView_Delegate_DataSource_FlowLa
     }
     //MARK: - protocol function
     func didTappedFavoriteButton(_ row: Int) {
-        let isFavorite = product[row].isFav // to know is fav vlue in array
-        product[row].isFav = !isFavorite  // to change value when choose
-        productsCollectionView.reloadData() // to reload data
+        let isFavorite = product[row].inFavorites
+        product[row].inFavorites = !isFavorite
+        productsCollectionView.reloadData()
         
     }
     
@@ -225,3 +253,25 @@ extension NewCollctionViewController {
     }
     
 }
+// MARK: - Custom Delegate
+extension NewCollctionViewController: UsenigColorFilterProtocol{
+    func didUserTappCancelOrDoneButton(tabBar: UITabBar?) {
+        //
+    }
+    
+    func didUserUseingColorFilter(name: String?, color: UIColor?) {
+        if name != ""{
+            FilterButton.setTitle(name, for: .normal)
+        }else{
+            FilterButton.setTitle("Filter", for: .normal)
+        }
+    }
+  
+    
+    
+}
+
+
+
+
+

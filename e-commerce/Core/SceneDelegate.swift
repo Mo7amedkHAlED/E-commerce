@@ -34,11 +34,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate,MOLHResetable {
     }
     //MARK: - root View controller يعني الصفحه اللي هي المفروض تتفتح اول لم البرنامج يشتغل
     func rootViewController(){
+        //MARK: - to get data from user default
+        let userDefaultToken = UserDefaults.standard.string(forKey: "LoginToken")
+        if userDefaultToken != nil{
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+        let loginViewController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
         let navigationController = UINavigationController(rootViewController: loginViewController)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+        }else{
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+            let navigationController = UINavigationController(rootViewController: loginViewController)
+            window?.rootViewController = navigationController
+            window?.makeKeyAndVisible()
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

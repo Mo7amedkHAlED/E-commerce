@@ -7,5 +7,10 @@ target 'e-commerce' do
 
   # Pods for e-commerce
 	pod 'MOLH'
+	pod 'Alamofire'
+  pod "ProgressHUD"
+  pod 'Kingfisher'
+
+
 
 end

@@ -6,18 +6,21 @@
 //
 
 import UIKit
+import Alamofire
+import ProgressHUD
 
 class HomeViewController: UIViewController{
 
     @IBOutlet weak var collectionView: UICollectionView!
     
     
-    let images: [UIImage] = [UIImage(named: "lunchScreen")!,UIImage(named: "category1")!,UIImage(named: "category2")!]
-    let names: [String] = ["New collection", "Summer Sale", "Mean‘s hoodies"]
-    
+//    var image = [UIImage(named: "electronics"),UIImage(named: "jewelery"),UIImage(named: "men's clothing"),UIImage(named: "lunchScreen"),UIImage(named: "Pullover"),UIImage(named: "Shirt")]
+//    let names: [String] = ["New collection", "Summer Sale", "Mean‘s hoodies"]
+    var CategoriesArray : [CategoryDatum]?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationController?.navigationBar.topItem?.title = "Home"
+        GetCategoriesApi()
         registerCollectionView()
     }
     
@@ -28,6 +31,8 @@ class HomeViewController: UIViewController{
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        navigationController?.navigationBar.topItem?.title = "Home" // to make title
+
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
@@ -38,6 +43,24 @@ class HomeViewController: UIViewController{
         collectionView.reloadData() 
          
     }
+    func GetCategoriesApi(){
+        guard let url = URL(string: "https://student.valuxapps.com/api/categories") else { return}
+        ProgressHUD.show("loading....")
+        let header : HTTPHeaders = [.init(name: "lang", value: "en")]
+        AF.request(url, method: .get ,headers: header).responseDecodable(of: BaseResponse<CategoriesModel>.self) { response in
+            switch response.result{
+            case .success(let AllCategries):
+                ProgressHUD.dismiss()
+                self.CategoriesArray = AllCategries.data?.data
+                self.collectionView.reloadData()
+                print(AllCategries)
+            case .failure(let error):
+                ProgressHUD.showError()
+                print(error.localizedDescription)
+            }
+        }
+        
+    }
 
 }
 
@@ -45,23 +68,24 @@ class HomeViewController: UIViewController{
 extension HomeViewController: CollectionView_Delegate_DataSource_FlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
-        if indexPath.row == 0 {
+       print(indexPath.row)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "NewCollctionViewController")
+            let viewController = storyboard.instantiateViewController(withIdentifier: "NewCollctionViewController") as! NewCollctionViewController
+            viewController.categoriesId = CategoriesArray?[indexPath.row]
             navigationController?.pushViewController(viewController, animated: true)
-        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-         return 3
+        return CategoriesArray?.count ?? 0
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoriesCollectionViewCell", for: indexPath) as! CategoriesCollectionViewCell
-        cell.categoryImage.image = images[indexPath.row]
-        cell.categoryNameLabel.text = names[indexPath.row]
+        let Categories = CategoriesArray![indexPath.row] // to take image name
+        //cell.categoryImage.image = image[indexPath.row]
+        cell.categoryImage.loadImage(urlString: Categories.image ?? "")
+        cell.categoryNameLabel.text = Categories.name
         return cell
     }
     
@@ -76,7 +100,7 @@ extension HomeViewController {
         switch indexPath.row {
         case 0:
             print(indexPath.row ,width)
-            return CGSize(width: width, height: height)
+            return CGSize(width: width  , height: height)
         default:
             print(width / 2)
             return CGSize(width: width / 2, height: height)
@@ -94,6 +118,6 @@ extension HomeViewController {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-    
 }
+
 

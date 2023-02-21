@@ -16,14 +16,18 @@ class ProductModel{
     var des : String
     var price : Int
     var isFav : Bool
-    
-    init (id : Int, image : String, title : String, des : String, price : Int, isFav :Bool = false){
+    var isCart: Bool
+    var moreDetails : String
+
+    init (id : Int, image : String, title : String, des : String, price : Int, isFav :Bool = false,isCart :Bool = false,moreDetails:String = " "){
         self.id = id
         self.image = image
         self.title = title
         self.des = des
         self.price = price
         self.isFav = isFav
+        self.isCart = isCart
+        self.moreDetails = moreDetails
     }
     
 }

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "shopping-bag.png",
+      "filename" : "shoppingBagWhite.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "shopping-bag@2x.png",
+      "filename" : "shoppingBagWhite@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "shopping-bag@3x.png",
+      "filename" : "shoppingBagWhite@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -12,9 +12,9 @@ protocol sortBy : AnyObject {
 }
 class SortByViewController: UIViewController {
     
-    @IBOutlet var listViews: [UIView]! // to connect with multi UiView
+    @IBOutlet var listViews: [UIView]! 
     
-    @IBOutlet var listLabels: [UILabel]! // to connect with multi UILabel
+    @IBOutlet var listLabels: [UILabel]!
     
     var delegate : sortBy?
     
@@ -29,7 +29,7 @@ class SortByViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         UIView.animate(withDuration: 0.2) {
-            self.view.backgroundColor = UIColor.black.withAlphaComponent(0.7) // نسبه الشفافيه ui view
+            self.view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
         }
     }
     
@@ -40,11 +40,11 @@ class SortByViewController: UIViewController {
     }
     
     
-    @IBAction func didTappedListButtons(_ sender: UIButton) { // to take action
-        let title = sortArray[sender.tag] // to send number of index 
+    @IBAction func didTappedListButtons(_ sender: UIButton) {
+        let title = sortArray[sender.tag]
         delegate?.didChangeSort(title: title)
-        listViews.forEach({$0.backgroundColor = .white})//to select only one item 
-        listViews.first(where: {$0.tag == sender.tag })?.backgroundColor = .red
+        listViews.forEach({$0.backgroundColor = .white})
+        listViews.first(where: {$0.tag == sender.tag })?.backgroundColor = .purple
         
         for x in listLabels {
             if x.tag == sender.tag {

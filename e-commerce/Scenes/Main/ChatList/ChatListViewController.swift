@@ -28,7 +28,7 @@ extension ChatListViewController :Table_Delegate_DataSource{
         return UITableView.automaticDimension // conect to label hight
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 6
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
